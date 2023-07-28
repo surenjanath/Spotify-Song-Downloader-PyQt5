@@ -3,7 +3,12 @@
 
 ## Introduction
 
-In this project, we have created a Spotify song downloader using Python and PyQt5. The application allows users to download their favorite Spotify songs by providing the playlist link. We utilize web scraping techniques to extract the song data and PyQt5 for building an interactive and user-friendly desktop application.
+In this project, we have created a Spotify song downloader using Python and PyQt5. The application allows users to download their favorite Spotify songs by providing the playlist link. We utilize web scraping techniques to extract the song data and PyQt5 for building an interactive and user-friendly desktop application.<br>
+This is the code for the User Interface.<br>
+
+## Spotify Song Downloader EXE
+You can find the program here :
+Please note that your antivirus may be triggered but I Guarantee you, there are no malicious activity in the exe file. You can recreate it base on this code in this repository.
 
 ## How it Works
 
