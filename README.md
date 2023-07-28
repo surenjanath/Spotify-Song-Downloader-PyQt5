@@ -8,14 +8,9 @@ In this project, we have created a Spotify song downloader using Python and PyQt
 This is the code for the User Interface.<br>
 
 ## Spotify Song Downloader EXE
-You can find the program here :
+You can find the program here : [https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g](https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g) <br>
 Please note that your antivirus may be triggered but I Guarantee you, there are no malicious activity in the exe file. You can recreate it base on this code in this repository.
-Uploading have given some issues due to file being an exe but you'll just need to remove the brackets from the file and save.
-IE : <br>
-<br>File name : 
-<br>`Spotify_Downloader[.]exe`
-<br>Remove brackets to get 
-<br>`Spotify_Downloader.exe`
+Do Let me know if the Link is Live Still.
 
 ## How it Works
 
