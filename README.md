@@ -1,5 +1,6 @@
 # Spotify Song Downloader with Python and PyQt5
 
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/c0d34f74-2545-4b5b-aa3f-de1bc6a33321)
 
 ## Introduction
 
@@ -9,10 +10,19 @@ This is the code for the User Interface.<br>
 ## Spotify Song Downloader EXE
 You can find the program here :
 Please note that your antivirus may be triggered but I Guarantee you, there are no malicious activity in the exe file. You can recreate it base on this code in this repository.
+Uploading have given some issues due to file being an exe but you'll just need to remove the brackets from the file and save.
+IE : <br>
+<br>File name : 
+<br>`Spotify_Downloader[.]exe`
+<br>Remove brackets to get 
+<br>`Spotify_Downloader.exe`
 
 ## How it Works
 
 The Spotify song downloader uses web scraping to interact with a specific website and extract song information, including the song title, artists, and YouTube ID. It then utilizes the YouTube ID to generate Analyze and Conversion IDs, which are used to download the songs. The PyQt5 interface allows users to input the Spotify playlist link, view real-time download progress, and receive updates on the downloaded songs.
+
+### Medium article For this : 
+- 
 
 ## Requirements
 
