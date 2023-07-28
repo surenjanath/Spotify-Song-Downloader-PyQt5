@@ -1,6 +1,5 @@
 # Spotify Song Downloader with Python and PyQt5
 
-![Spotify Song Downloader](spotify_downloader.png)
 
 ## Introduction
 
@@ -37,7 +36,7 @@ cd spotify-song-downloader`
 
 ## Author
 
-- [Your Name](https://github.com/surenjanath)
+- [Surenjanath Singh](https://github.com/surenjanath)
 
 ## License
 
