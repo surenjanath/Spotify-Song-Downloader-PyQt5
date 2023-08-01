@@ -19,6 +19,14 @@ The Spotify song downloader uses web scraping to interact with a specific websit
 ### Medium article For this : 
 - [Building an Interface for our Spotify Song Downloader with PyQt5](https://surenjanath.medium.com/building-an-interface-for-our-spotify-song-downloader-with-pyqt5-fa0442909be9)
 
+## Features to Add
+
+- Proper Error handing in v2 using Spotifydown New API [ Easy Mode ]
+  With this new implementation the program will download songs at 320 hz instead of 128 hz but if an error occurs it will fall back to 128hz.
+- MP3 metadata such as song cover, artists, album and release date.
+- Might include a database for songs that was downloaded already [ Still thinking ]
+- Each Playlist in separate folders instead of the main music folder
+  
 ## Requirements
 
 - Python 3.x
