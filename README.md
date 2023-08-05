@@ -38,7 +38,7 @@ The Spotify song downloader uses web scraping to interact with a specific websit
 
 
 ### Youtube Demo for v2.0
-[![Spotify Downloader Demo](https://img.youtube.com/vi/9BchQDPDR6w/0.jpg)](https://www.youtube.com/watch?v=9BchQDPDR6w)
+[![Spotify Downloader Demo](https://img.youtube.com/vi/pGZ8OlFylDQ/0.jpg)](https://www.youtube.com/watch?v=pGZ8OlFylDQ)
 
 
 
