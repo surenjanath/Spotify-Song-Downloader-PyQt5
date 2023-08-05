@@ -86,6 +86,8 @@ cd spotify-song-downloader`
 
 It's a false detection.
 
+Also if you are not able to download any songs, try using a vpn and see if that helps. If not then let me know in the issues section.
+
 
 ## Author
 
