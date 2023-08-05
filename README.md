@@ -27,8 +27,20 @@ Do Let me know if the Link is Live Still.
 
 The Spotify song downloader uses web scraping to interact with a specific website and extract song information, including the song title, artists, and YouTube ID. It then utilizes the YouTube ID to generate Analyze and Conversion IDs, which are used to download the songs. The PyQt5 interface allows users to input the Spotify playlist link, view real-time download progress, and receive updates on the downloaded songs.
 
-### Youtube Demo
-[![Spotify Downloader Demo](https://img.youtube.com/vi/V5tnuNkmKZQ/0.jpg)](https://www.youtube.com/watch?v=V5tnuNkmKZQ)
+
+### Pictures of V2.0
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/631e98ee-698e-4e66-9e45-e462357f5432)
+
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/816cb61a-1fac-40a5-9386-ad789c0c7a75)
+
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/b3cca123-773e-41c3-bf93-7e9cadde6516)
+
+
+
+### Youtube Demo for v2.0
+[![Spotify Downloader Demo](https://img.youtube.com/vi/9BchQDPDR6w/0.jpg)](https://www.youtube.com/watch?v=9BchQDPDR6w)
+
+
 
 ### Medium article For this : 
 - [Building an Interface for our Spotify Song Downloader with PyQt5](https://surenjanath.medium.com/building-an-interface-for-our-spotify-song-downloader-with-pyqt5-fa0442909be9)
