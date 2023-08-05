@@ -6,21 +6,20 @@
 - v2.0
   - Added Progress bar and interface to view songs as it is being downloaded.
   - Used v2 method for 320 kbps songs and if not available will revert to 128 kbps
-  - Release [ Coming Soon ]
+  - **Release**
+  - version 2.0 is in the same mega download link below.
+  - To get v2.0 files, use the release feature on the right side of the repository named : [Release](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/releases/tag/SpotifyDownloader2.0)
     
 - v1.0
   - Released
   
-
-
-
 ## Introduction
 
 In this project, we have created a Spotify song downloader using Python and PyQt5. The application allows users to download their favorite Spotify songs by providing the playlist link. We utilize web scraping techniques to extract the song data and PyQt5 for building an interactive and user-friendly desktop application.<br>
 This is the code for the User Interface.<br>
 
 ## Spotify Song Downloader EXE
-You can find the program here : [https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g](https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g) <br>
+You can find the program here also version 2 : [https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g](https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g) <br>
 Please note that your antivirus may be triggered but I Guarantee you, there are no malicious activity in the exe file. You can recreate it base on this code in this repository.
 Do Let me know if the Link is Live Still.
 
@@ -36,11 +35,11 @@ The Spotify song downloader uses web scraping to interact with a specific websit
 
 ## Features to Add
 
-- Proper Error handing in v2 using Spotifydown New API [ Easy Mode ]
-  With this new implementation the program will download songs at 320 kbps instead of 128 kbps but if an error occurs it will fall back to 128 kbps.
+- Proper Error handing in v2 using Spotifydown New API [ Easy Mode ] ✓
+  With this new implementation the program will download songs at 320 kbps instead of 128 kbps but if an error occurs it will fall back to 128 kbps. ✓
 - MP3 metadata such as song cover, artists, album and release date.
 - Might include a database for songs that was downloaded already [ Still thinking ]
-- Each Playlist in separate folders instead of the main music folder
+- Each Playlist in separate folders instead of the main music folder ✓
   
 ## Requirements
 
@@ -66,6 +65,15 @@ cd spotify-song-downloader`
 - `Template.ui`: The UI template file created using Qt Designer.
 - `scraper.py`: Contains the MusicScraper class with web scraping functions.
 - `scraper_thread.py`: Contains the ScraperThread class for handling web scraping in a separate thread.
+
+
+### Please Note Your Antivirus would do this : 
+1. ![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/aa510f72-07ce-440f-8bf0-0ee2e5d7f192)
+
+2. ![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/01b561fe-753a-4af1-85c8-f035ef4282e8)
+
+It's a false detection.
+
 
 ## Author
 
