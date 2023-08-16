@@ -3,6 +3,9 @@
 ![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/c0d34f74-2545-4b5b-aa3f-de1bc6a33321)
 
 ## Updates
+- v2.1 **Release**
+  - Added Song Metadata such as song cover, artist, title and song release date
+    
 - v2.0
   - Added Progress bar and interface to view songs as it is being downloaded.
   - Used v2 method for 320 kbps songs and if not available will revert to 128 kbps
@@ -28,29 +31,29 @@ Do Let me know if the Link is Live Still.
 The Spotify song downloader uses web scraping to interact with a specific website and extract song information, including the song title, artists, and YouTube ID. It then utilizes the YouTube ID to generate Analyze and Conversion IDs, which are used to download the songs. The PyQt5 interface allows users to input the Spotify playlist link, view real-time download progress, and receive updates on the downloaded songs.
 
 
-### Pictures of V2.0
-![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/631e98ee-698e-4e66-9e45-e462357f5432)
+### Pictures of V2.1
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/ad3d0d23-1005-49c1-b5c4-e8f2ee8f8094)
 
-![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/816cb61a-1fac-40a5-9386-ad789c0c7a75)
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/e0bda50b-edea-4651-8d78-0f3c403b59a9)
 
-![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/b3cca123-773e-41c3-bf93-7e9cadde6516)
+![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/662093f2-fdaa-4cc5-af9a-f2d195f5165d)
 
 
 
-### Youtube Demo for v2.0
-[![Spotify Downloader Demo](https://img.youtube.com/vi/pGZ8OlFylDQ/0.jpg)](https://www.youtube.com/watch?v=pGZ8OlFylDQ)
+
+### Youtube Demo for v2.1
+[![Spotify Downloader Demo](https://img.youtube.com/vi/zVZHIXqoMSU/0.jpg)](https://www.youtube.com/watch?v=zVZHIXqoMSU)
 
 
 
 ### Medium article For this : 
 - [Building an Interface for our Spotify Song Downloader with PyQt5](https://surenjanath.medium.com/building-an-interface-for-our-spotify-song-downloader-with-pyqt5-fa0442909be9)
 
-## Features to Add
+## Features to Add [ Completed ]
 
 - Proper Error handing in v2 using Spotifydown New API [ Easy Mode ] ✓
   With this new implementation the program will download songs at 320 kbps instead of 128 kbps but if an error occurs it will fall back to 128 kbps. ✓
-- MP3 metadata such as song cover, artists, album and release date.
-- Might include a database for songs that was downloaded already [ Still thinking ]
+- MP3 metadata such as song cover, artists, album and release date. ✓
 - Each Playlist in separate folders instead of the main music folder ✓
   
 ## Requirements
@@ -60,6 +63,7 @@ The Spotify song downloader uses web scraping to interact with a specific websit
 - requests
 - string
 - re
+- mutagen
 
 ## Installation
 
