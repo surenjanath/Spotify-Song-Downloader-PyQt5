@@ -92,6 +92,9 @@ It's a false detection.
 
 Also if you are not able to download any songs, try using a vpn and see if that helps. If not then let me know in the issues section.
 
+## ToC
+Please use it to download Copyright Free Music on Spotify
+For example : https://open.spotify.com/playlist/3fQ6EJdy6n1kF4Yw5bTAVx?si=2f26056713504154
 
 ## Author
 
