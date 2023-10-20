@@ -3,6 +3,8 @@
 ![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/c0d34f74-2545-4b5b-aa3f-de1bc6a33321)
 
 ## Updates
+
+- v2.1 Stop Working [ 19th October 2023 ]
 - v2.1 **Release** 15 August 2023
   - Added Song Metadata such as song cover, artist, title and song release date
     
