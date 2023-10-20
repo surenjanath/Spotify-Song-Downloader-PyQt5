@@ -4,8 +4,12 @@
 
 ## Updates
 
+- v2.1.1 **Release** 19th October 2023
+  - Fixed API Paths
+  
 - v2.1 Stop Working [ 19th October 2023 ]
-- v2.1 **Release** 15 August 2023
+  
+- v2.1 
   - Added Song Metadata such as song cover, artist, title and song release date
     
 - v2.0
@@ -24,7 +28,7 @@ In this project, we have created a Spotify song downloader using Python and PyQt
 This is the code for the User Interface.<br>
 
 ## Spotify Song Downloader EXE
-You can find the program here also version 2 : [https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g](https://mega.nz/folder/hw4R3KRK#qAepUHnE5QoQPxUCSTak8g) <br>
+You can find the program here also version 2.1.1 : [https://mega.nz/file/wpwyzLaD#P--jbIUIlnyoDLblzXPsXRVrfh6Q5zl9QubUMDSQ5_k](https://mega.nz/file/wpwyzLaD#P--jbIUIlnyoDLblzXPsXRVrfh6Q5zl9QubUMDSQ5_k) <br>
 Please note that your antivirus may be triggered but I Guarantee you, there are no malicious activity in the exe file. You can recreate it base on this code in this repository.
 Do Let me know if the Link is Live Still.
 
