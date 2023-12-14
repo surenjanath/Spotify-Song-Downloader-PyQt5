@@ -5,7 +5,7 @@
 DOWNLOAD LINK : [HERE MEGA.NZ](https://mega.nz/file/dpI0RAYC#8wnn8iqDa1BXgQQRUn7vU2-1kOzyqF-Dm7FWgsF4V10)
 
 ## Updates
-- v2.1.2 **Release** 19th October 2023
+- v2.1.2 **Release** 13th December 2023
   - Removed old API Method
   - Removed Progress Bar functionality due to stream method for downloading
   - Fix Downloading and addressed some issues.
