@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
+    <width>735</width>
     <height>390</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame#frame{
+   <string notr="true">QFrame#frame, #SONGINFORMATION{
 	background-color: qlineargradient(spread:pad, x1:1.072045, y1:0.124, x2:0.368, y2:1, stop:0.227273 rgba(80, 214, 255, 155), stop:0.806818 rgba(112, 32,213,191));
 	border-radius:10px;
 }
@@ -74,11 +74,11 @@ QPushButton#Select_Home:pressed{
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="title">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>13</y>
+       <y>16</y>
        <width>260</width>
        <height>41</height>
       </rect>
@@ -91,8 +91,8 @@ QPushButton#Select_Home:pressed{
      </property>
      <property name="font">
       <font>
-       <family>Mistral</family>
-       <pointsize>24</pointsize>
+       <family>Arial</family>
+       <pointsize>16</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -142,6 +142,8 @@ QPushButton#Select_Home:pressed{
      </property>
      <property name="font">
       <font>
+       <family>Agency FB</family>
+       <pointsize>16</pointsize>
        <kerning>false</kerning>
       </font>
      </property>
@@ -170,7 +172,7 @@ QPushButton#Select_Home:pressed{
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="PlaylistMsg">
+    <widget class="QLabel" name="AlbumName">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -181,52 +183,59 @@ QPushButton#Select_Home:pressed{
      </property>
      <property name="font">
       <font>
-       <family>NSimSun</family>
-       <pointsize>8</pointsize>
+       <family>Agency FB</family>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>Playlist Code : </string>
+      <string>Playlist Name :</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="author">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>50</y>
+       <y>43</y>
        <width>161</width>
        <height>16</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>6</pointsize>
+       <family>Agency FB</family>
+       <pointsize>8</pointsize>
       </font>
      </property>
      <property name="text">
       <string>Created By Surenjanath</string>
      </property>
     </widget>
-    <widget class="QLabel" name="SongName">
+    <widget class="QLabel" name="MainSongName">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>163</y>
+       <y>170</y>
        <width>201</width>
-       <height>71</height>
+       <height>37</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>NSimSun</family>
-       <pointsize>10</pointsize>
+       <family>Agency FB</family>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -238,7 +247,7 @@ QPushButton#Select_Home:pressed{
        <x>30</x>
        <y>270</y>
        <width>201</width>
-       <height>20</height>
+       <height>27</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -252,7 +261,7 @@ QPushButton#Select_Home:pressed{
        <widget class="QLabel" name="label_7">
         <property name="minimumSize">
          <size>
-          <width>40</width>
+          <width>45</width>
           <height>0</height>
          </size>
         </property>
@@ -264,11 +273,12 @@ QPushButton#Select_Home:pressed{
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
-         <string>Status :</string>
+         <string>Status   :</string>
         </property>
        </widget>
       </item>
@@ -276,7 +286,8 @@ QPushButton#Select_Home:pressed{
        <widget class="QLabel" name="statusMsg">
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Agency FB</family>
+          <pointsize>11</pointsize>
          </font>
         </property>
         <property name="text">
@@ -297,34 +308,12 @@ QPushButton#Select_Home:pressed{
      </property>
      <property name="font">
       <font>
-       <family>NSimSun</family>
-       <pointsize>9</pointsize>
+       <family>Agency FB</family>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>Song Name  : </string>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="CounterLabel">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>240</y>
-       <width>201</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>NSimSun</family>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Counter : Songs downloaded 0</string>
+      <string>Spotify Song Name :</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -334,22 +323,431 @@ QPushButton#Select_Home:pressed{
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>300</y>
-       <width>201</width>
-       <height>30</height>
+       <y>319</y>
+       <width>200</width>
+       <height>21</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="font">
       <font>
-       <family>Imprint MT Shadow</family>
-       <pointsize>9</pointsize>
+       <family>Agency FB</family>
+       <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
      </property>
      <property name="text">
       <string>Follow me on Medium</string>
      </property>
     </widget>
+    <widget class="QLabel" name="version">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>12</y>
+       <width>35</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>2.1</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>240</y>
+       <width>201</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="counterBox">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>4</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_10">
+        <property name="minimumSize">
+         <size>
+          <width>45</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Counter :</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="CounterLabel">
+        <property name="font">
+         <font>
+          <family>Agency FB</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Songs downloaded 0</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_5">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>210</y>
+       <width>201</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="Options">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="showPreviewCheck">
+        <property name="text">
+         <string>Show Preview</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="AddMetaDataCheck">
+        <property name="text">
+         <string>Add Meta Tags</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QProgressBar" name="SongDownloadprogress">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>310</y>
+       <width>200</width>
+       <height>4</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>1</pointsize>
+      </font>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
+   <widget class="QFrame" name="SONGINFORMATION">
+    <property name="geometry">
+     <rect>
+      <x>285</x>
+      <y>30</y>
+      <width>0</width>
+      <height>330</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>10</y>
+       <width>150</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>17</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="toolTipDuration">
+      <number>0</number>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Song Information</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="indent">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>29</x>
+       <y>210</y>
+       <width>51</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Released :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>240</y>
+       <width>50</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Artist :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>270</y>
+       <width>50</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Album :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="YearText">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>210</y>
+       <width>165</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ArtistNameText">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>240</y>
+       <width>170</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="AlbumText">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>270</y>
+       <width>165</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="SongDownloadprogressBar">
+     <property name="geometry">
+      <rect>
+       <x>23</x>
+       <y>313</y>
+       <width>230</width>
+       <height>4</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>1</pointsize>
+      </font>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="CoverImg">
+     <property name="geometry">
+      <rect>
+       <x>78</x>
+       <y>53</y>
+       <width>120</width>
+       <height>120</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>2</number>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="margin">
+      <number>1</number>
+     </property>
+     <property name="indent">
+      <number>-1</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="SongName">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>180</y>
+       <width>165</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>180</y>
+       <width>50</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Agency FB</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Song :&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>SONGINFORMATION</zorder>
+   <zorder>frame</zorder>
   </widget>
  </widget>
  <resources/>

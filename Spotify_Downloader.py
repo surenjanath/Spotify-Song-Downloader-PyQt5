@@ -2,9 +2,9 @@
 # Main
 # if __name__ == '__main__':from PyQt5.uic import loadUi
 
-from PyQt5.QtWidgets import QMainWindow, QApplication
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import  QCursor
+from PyQt5.QtWidgets import QMainWindow, QApplication, QGraphicsDropShadowEffect
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtSlot, QSize, QPropertyAnimation, QEasingCurve
+from PyQt5.QtGui import  QCursor, QImage, QPixmap
 from Template import Ui_MainWindow
 
 import sys
@@ -13,11 +13,19 @@ import string
 import requests
 import re
 import webbrowser
+from mutagen.easyid3 import EasyID3
+from mutagen.id3 import APIC, ID3
 
 
 class MusicScraper(QThread):
-    song_downloaded = pyqtSignal(str)
+    PlaylistCompleted = pyqtSignal(str)
+    PlaylistID = pyqtSignal(str)
+    song_Album = pyqtSignal(str)
+    song_meta = pyqtSignal(dict)
+    add_song_meta = pyqtSignal(dict)
     count_updated = pyqtSignal(int)
+    dlprogress_signal = pyqtSignal(int)
+    Resetprogress_signal = pyqtSignal(int)
 
 
 
@@ -125,9 +133,81 @@ class MusicScraper(QThread):
             return x.json()['link']
         return None
 
+
+
+    def V2catch(self, SONG_ID):
+        ## Updated .. .19TH OCTOBER 2023
+        # yt_id = self.get_ID(SONG_ID)
+
+        # domain = ["co.wuk.sh", "cobalt2.snapredd.app"]
+        # target_domain = domain[random.randint(0,len(domain) - 1)]
+        headers = {
+            "authority": "api.spotifydown.com",
+            "method": "POST",
+            "path": '/download/68GdZAAowWDac3SkdNWOwo',
+            "scheme": "https",
+            "Accept": "*/*",
+
+            'Sec-Ch-Ua':'"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
+            "Dnt": '1',
+            "Origin": "https://spotifydown.com",
+            "Referer": "https://spotifydown.com/",
+            "Sec-Ch-Ua-Mobile": "?0",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "cross-site",
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36'
+        }
+
+        ## Updated .. .29TH OCTOBER 2023
+        x = self.session.get(url = f'https://api.spotifydown.com/download/{SONG_ID}', headers=headers)
+
+        # if x.status_code == 200:
+
+        #     # par = {
+        #     #     'aFormat':'"mp3"',
+        #     #     'dubLang':'false',
+        #     #     'filenamePattern':'"classic"',
+        #     #     'isAudioOnly':'true',
+        #     #     'isNoTTWatermark':'true',
+        #     #     'url':f'"https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D{yt_id}"'
+        #     # }
+
+        #     file_status = self.session.post(url=f"https://{target_domain}/api/json", json=par, headers=headers)
+        # print('[*] Data Gathered : ', str(x.content))
+        if x.status_code == 200:
+
+            try:
+                return {
+                    'link' : x.json()['link'],
+                    'metadata' : None
+                }
+            except:
+                return {
+                    'link' : None,
+                    'metadata' : None
+                }
+
+        return None
+
+
+
     def scrape_playlist(self, spotify_playlist_link, music_folder):
         ID = self.returnSPOT_ID(spotify_playlist_link)
+        self.PlaylistID.emit(ID)
         PlaylistName = self.get_PlaylistMetadata(ID)
+        self.song_Album.emit(PlaylistName)
+        # Create Folder for Playlist
+        if not os.path.exists(music_folder):
+            os.makedirs(music_folder)
+        try:
+            FolderPath = ''.join(e for e in PlaylistName if e.isalnum() or e in [' ', '_'])
+            playlist_folder_path = os.path.join(music_folder, FolderPath)
+        except:
+            playlist_folder_path = music_folder
+
+        if not os.path.exists(playlist_folder_path):
+            os.makedirs(playlist_folder_path)
 
         headers = {
             'authority': 'api.spotifydown.com',
@@ -157,47 +237,61 @@ class MusicScraper(QThread):
                 Tdata = response.json()['trackList']
                 page = response.json()['nextOffset']
                 for count, song in enumerate(Tdata):
-                    yt_id = self.get_ID(song['id'])
-                    if yt_id is not None:
-                        filename = song['title'].translate(str.maketrans('', '', string.punctuation)) + ' - ' + song['artists'].translate(str.maketrans('', '', string.punctuation)) + '.mp3'
+                    self.Resetprogress_signal.emit(0)
+                    filename = song['title'].translate(str.maketrans('', '', string.punctuation)) + ' - ' + song['artists'].translate(str.maketrans('', '', string.punctuation)) + '.mp3'
+                    filepath = os.path.join(playlist_folder_path, filename)
+                    try:
                         try:
-                            data = self.generate_Analyze_id(yt_id['id'])
-                            try:
-                                DL_ID = data['links']['mp3']['mp3128']['k']
-                                DL_DATA = self.generate_Conversion_id(data['vid'], DL_ID)
-                                DL_LINK = DL_DATA['dlink']
-                            except Exception as NoLinkError:
-                                CatchMe = self.errorcatch(song['id'])
-                                if CatchMe is not None:
-                                    DL_LINK = CatchMe
-                            if DL_LINK is not None:
-                                ## DOWNLOAD
-                                link = self.session.get(DL_LINK)
+                            V2METHOD    = self.V2catch(song['id'])
+                            DL_LINK     = V2METHOD['link']
+                            SONG_META   = song
+                            SONG_META['file'] = filepath
+                            self.song_meta.emit(SONG_META)
+                        except IndentationError:
+                            yt_id = self.get_ID(song['id'])
 
-                                # Create Folder for Playlist
-                                if not os.path.exists(music_folder):
-                                    os.makedirs(music_folder)
-
-                                ## Save
-                                with open(os.path.join(music_folder, filename), 'wb') as f:
-                                    f.write(link.content)
-
-                                #Increment the counter
-                                self.increment_counter()
-
-                                # Emit the signal with the downloaded song name
-                                self.song_downloaded.emit(filename.replace('.mp3',''))
+                            if yt_id is not None:
+                                data = self.generate_Analyze_id(yt_id['id'])
+                                try:
+                                    DL_ID = data['links']['mp3']['mp3128']['k']
+                                    DL_DATA = self.generate_Conversion_id(data['vid'], DL_ID)
+                                    DL_LINK = DL_DATA['dlink']
+                                except Exception as NoLinkError:
+                                    CatchMe = self.errorcatch(song['id'])
+                                    if CatchMe is not None:
+                                        DL_LINK = CatchMe
                             else:
-                                print('[*] No Download Link Found.')
-                        except Exception as error_status:
-                            print('[*] Error Status Code : ', error_status)
+                                print('[*] No data found for : ', song)
 
-                    else:
-                        print('[*] No data found for : ', song)
+                        download_complete = False
+                        if DL_LINK is not None:
+                            ## DOWNLOAD
+                            link = self.session.get(DL_LINK, stream=True)
+                            total_size = int(link.headers.get('content-length', 0))
+                            block_size = 1024  # 1 Kilobyte
+                            downloaded = 0
+                            ## Save
+                            with open(filepath, "wb") as f:
+                                for data in link.iter_content(block_size):
+                                    f.write(data)
+                                    downloaded += len(data)
+                                    # self.dlprogress_signal.emit(int(100 * downloaded / total_size))
+
+
+                            #Increment the counter
+                            self.increment_counter()
+
+                            # # Emit the signal with the downloaded song name
+                            self.add_song_meta.emit(SONG_META)
+                        else:
+                            print('[*] No Download Link Found.')
+                    except Exception as error_status:
+                        print('[*] Error Status Code : ', error_status)
             if page is not None:
                 offset_data['offset'] = page
                 response = self.session.get(url=Playlist_Link, params=offset_data, headers=headers)
             else:
+                self.PlaylistCompleted.emit('Download Complete!')
                 break
 
     def returnSPOT_ID(self, link):
@@ -240,11 +334,86 @@ class ScraperThread(QThread):
         except Exception as e:
             self.progress_update.emit(f"{e}")
 
+# Download Song Cover Thread
+class DownloadCover(QThread):
+    albumCover = pyqtSignal(object)
+    def __init__(self, url):
+        super().__init__()
+        self.url = url
 
 
+    def run(self):
+        response = requests.get(self.url, stream=True)
+        if response.status_code == 200 :
+            self.albumCover.emit(response.content)
+
+# Scraper Thread
+class WritingMetaTagsThread(QThread):
+    tags_success = pyqtSignal(str)
+
+    def __init__(self, tags, filename):
+        super().__init__()
+        self.tags = tags
+        self.filename = filename
+        self.PICTUREDATA = None
+
+    def run(self):
+        # self.tags_success.emit("Writing Metatags")
+        try:
+            print('[*] FileName : ', self.filename)
+            audio = EasyID3(self.filename)
+            audio['title'] = self.tags['title']
+            audio['artist'] = self.tags['artists']
+            audio['album'] = self.tags['album']
+            audio['date'] = self.tags['releaseDate']
+            audio.save()
+            # self.tags_success.emit("Meta added!")
+            # self.tags_success.emit("Adding Cover")
+            self.CoverPic = DownloadCover(self.tags['cover']+"?size=1")
+            self.CoverPic.albumCover.connect(self.setPIC)
+            self.CoverPic.start()
+        except Exception as e:
+            pass
+            # print(f'Error {e}')
+            # self.tags_success.emit(f"Error in FIle : {e}")
+
+    def setPIC(self, data):
+        if data is None:
+            self.tags_success.emit("Cover Not Added..!")
+        else:
+            try:
+                audio = ID3(self.filename)
+                audio['APIC'] = APIC(
+                    encoding=3,
+                    mime='image/jpeg',
+                    type=3,
+                    desc=u'Cover',
+                    data=data
+                )
+                audio.save()
+                # self.tags_success.emit("Cover Added..!")
+            except Exception as e:
+                self.tags_success.emit(f"Error adding cover: {e}")
+
+
+class DownloadThumbnail(QThread):
+
+    def __init__(self, url, main_UI):
+        super().__init__()
+        self.url = url
+        self.main_UI = main_UI
+
+    def run(self):
+        response = requests.get(self.url, stream=True)
+        if response.status_code == 200 :
+            pic = QImage()
+            pic.loadFromData(response.content)
+            self.main_UI.CoverImg.setPixmap(QPixmap(pic))
+            self.main_UI.CoverImg.show()
 
 # Main Window
 class MainWindow(QMainWindow, Ui_MainWindow):
+# class MainWindow(QMainWindow):
 
     def __init__(self):
         """MainWindow constructor"""
@@ -255,8 +424,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.setupUi(self)
 
-
+        self.SONGINFORMATION.setGraphicsEffect(QGraphicsDropShadowEffect(blurRadius=25,xOffset=2,yOffset=2))
         self.PlaylistLink.returnPressed.connect(self.on_returnButton)
+
+        self.showPreviewCheck.stateChanged.connect(self.show_preview)
+
+
+
+
         self.Closed.clicked.connect(self.exitprogram)
         self.Select_Home.clicked.connect(self.Medium)
         # End main UI code
@@ -271,9 +446,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             # Start the scraper in a separate thread
             self.scraper_thread = ScraperThread(playlist_id)
+            # self.scraper_thread.scraper.PlaylistID.connect(lambda x:self.PlaylistMsg.setText("Playlist Code : {}".format(x)))  # Connect the signal
             self.scraper_thread.progress_update.connect(self.update_progress)
             self.scraper_thread.finished.connect(self.thread_finished)  # Connect the finished signal
-            self.scraper_thread.scraper.song_downloaded.connect(self.update_song_name)  # Connect the signal
+            self.scraper_thread.scraper.song_Album.connect(self.update_AlbumName)  # Connect the signal
+            self.scraper_thread.scraper.song_meta.connect(self.update_song_META)  # Connect the signal
+            self.scraper_thread.scraper.add_song_meta.connect(self.add_song_META)  # Connect the signal
+
+
+            self.scraper_thread.scraper.dlprogress_signal.connect(self.update_song_progress)  # Download Progress
+            self.scraper_thread.scraper.Resetprogress_signal.connect(self.Reset_song_progress)  # Download Progress
+            self.scraper_thread.scraper.PlaylistCompleted.connect(lambda x: self.statusMsg.setText(x))
+
             # Connect the count_updated signal to the update_counter slot
             self.scraper_thread.scraper.count_updated.connect(self.update_counter)
 
@@ -288,46 +472,109 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def update_progress(self, message):
         self.statusMsg.setText(message)
 
+    @pyqtSlot(dict)
+    def update_song_META(self, song_meta):
+
+
+
+        if self.showPreviewCheck.isChecked():
+            self.thumbnail_thread = DownloadThumbnail(song_meta['cover']+"?size=1", self)
+            self.thumbnail_thread.start()
+            self.ArtistNameText.setText(song_meta['artists'])
+            self.AlbumText.setText(song_meta['album'])
+            self.SongName.setText(song_meta['title'])
+            self.YearText.setText(song_meta['releaseDate'])
+        else:
+            pass
+
+        self.MainSongName.setText(song_meta['title'] + ' - ' + song_meta['artists'])
+        if self.AddMetaDataCheck.isChecked():
+            self.meta_thread = WritingMetaTagsThread(song_meta, song_meta['file'])
+            self.meta_thread.tags_success.connect(lambda x:self.statusMsg.setText("{}".format(x)))
+            self.meta_thread.start()
+
+
+
+    @pyqtSlot(dict)
+    def add_song_META(self, song_meta):
+        if self.AddMetaDataCheck.isChecked():
+            self.meta_thread = WritingMetaTagsThread(song_meta, song_meta['file'])
+            self.meta_thread.tags_success.connect(lambda x:self.statusMsg.setText("{}".format(x)))
+            self.meta_thread.start()
+
+
     @pyqtSlot(str)
-    def update_song_name(self, song_name):
-        self.SongName.setText(song_name)
+    def update_AlbumName(self, AlbumName):
+        self.AlbumName.setText("Playlist Name : " + AlbumName)
 
     @pyqtSlot(int)
     def update_counter(self, count):
-        self.CounterLabel.setText("Counter : Songs downloaded " + str(count))
+        self.CounterLabel.setText("Songs downloaded " + str(count))
+
+    @pyqtSlot(int)
+    def update_song_progress(self, progress):
+        self.SongDownloadprogressBar.setValue(progress)
+        self.SongDownloadprogress.setValue(progress)
+
+    @pyqtSlot(int)
+    def Reset_song_progress(self, progress):
+
+        self.SongDownloadprogressBar.setValue(0)
+        self.SongDownloadprogress.setValue(0)
+
 
     # DRAGGLESS INTERFACE
-
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
-
             self.m_drag = True
             self.m_DragPosition = event.globalPos() - self.pos()
             event.accept()
             self.setCursor(QCursor(Qt.ClosedHandCursor))
 
     def mouseMoveEvent(self, QMouseEvent):
-        if Qt.LeftButton and self.m_drag:
-            self.move(QMouseEvent.globalPos() - self.m_DragPosition)
-            QMouseEvent.accept()
+        try:
+            if Qt.LeftButton and self.m_drag:
+                self.move(QMouseEvent.globalPos() - self.m_DragPosition)
+                QMouseEvent.accept()
+        except:
+            pass
 
     def mouseReleaseEvent(self, QMouseEvent):
         self.m_drag = False
         self.setCursor(QCursor(Qt.ArrowCursor))
 
+    def CloseSongInformation(self):
+        self.animation = QPropertyAnimation(self.SONGINFORMATION, b"size")
+        self.animation.setDuration(250)
+        self.animation.setEndValue(QSize(0,330))
+        self.animation.setEasingCurve(QEasingCurve.InOutQuad)
+        self.animation.start()
+
+    def OpenSongInformation(self):
+        self.animation = QPropertyAnimation(self.SONGINFORMATION, b"size")
+        self.animation.setDuration(1000)
+        self.animation.setEndValue(QSize(270,330))
+        self.animation.setEasingCurve(QEasingCurve.InOutQuad)
+        self.animation.start()
+
+    def show_preview(self, state):
+        if state == 2:  # 2 corresponds to checked state
+            self.preview_window = self.OpenSongInformation()
+        else:
+            self.CloseSongInformation()
+
     def exitprogram(self):
         sys.exit()
 
     def Medium(self):
-        webbrowser.open('https://surenjanath.medium.com/')
-
+        webbrowser.open('https://surenjanath.medium.com/subscribe')
 
 # Main
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     Screen = MainWindow()
     Screen.setFixedHeight(390)
-    Screen.setFixedWidth(320)
+    Screen.setFixedWidth(600)
     Screen.setWindowFlags(Qt.FramelessWindowHint)
     Screen.setAttribute(Qt.WA_TranslucentBackground)
     Screen.show()
