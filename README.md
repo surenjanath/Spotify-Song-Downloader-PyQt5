@@ -2,9 +2,16 @@
 
 ![image](https://github.com/surenjanath/Spotify-Song-Downloader-PyQt5/assets/42503383/c0d34f74-2545-4b5b-aa3f-de1bc6a33321)
 
-## Updates
+DOWNLOAD LINK : [HERE MEGA.NZ](https://mega.nz/file/dpI0RAYC#8wnn8iqDa1BXgQQRUn7vU2-1kOzyqF-Dm7FWgsF4V10)
 
-- v2.1.1 **Release** 19th October 2023
+## Updates
+- v2.1.2 **Release** 19th October 2023
+  - Removed old API Method
+  - Removed Progress Bar functionality due to stream method for downloading
+  - Fix Downloading and addressed some issues.
+  - New download link. here : https://mega.nz/file/dpI0RAYC#8wnn8iqDa1BXgQQRUn7vU2-1kOzyqF-Dm7FWgsF4V10
+    
+- v2.1.1  19th October 2023
   - Fixed API Paths
   
 - v2.1 Stop Working [ 19th October 2023 ]
